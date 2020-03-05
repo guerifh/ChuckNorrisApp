@@ -3,6 +3,12 @@
 
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp"
+    android:background="#FF9A30"
+    android:padding="4dp"
+    android:textAlignment="textStart"
+    android:textColor="#FF00C0"
+    android:textSize="24sp">
 
 </TextView>
