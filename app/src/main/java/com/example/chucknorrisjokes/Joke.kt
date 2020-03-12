@@ -31,4 +31,8 @@ class Joke(
         }
         return bool
     }
+
+    override fun toString(): String {
+        return value
+    }
 }

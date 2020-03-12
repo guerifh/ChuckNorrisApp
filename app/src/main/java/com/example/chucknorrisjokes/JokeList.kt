@@ -1,5 +1,11 @@
 package com.example.chucknorrisjokes
 
+import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
+import kotlinx.serialization.json.Json
+import okhttp3.MediaType
+import retrofit2.Retrofit
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
+
 object jokes {
     val list =
         listOf<String>(
@@ -17,5 +23,19 @@ object jokes {
             "Chuck Norris' father is Chuck Norris, his mother is America, his brother is freedom and his other brother is Sam... Sam Norris. Chuck Norris loves his family dearly, except for Sam, that is why Sam no longer exists."
         )
 //Log.d("Liste", list.toString())
+
+}
+
+object jokeApiServiceFactory {
+
+    fun jokeService(): JokeApiService {
+        val url: String = "https://api.chucknorris.io/jokes/random"
+        val fact = Json.asConverterFactory(MediaType.get("application/json"))
+        val requestInterface = Retrofit.Builder()
+            .baseUrl(url)
+            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+            .addConverterFactory(fact.create())
+            .build().create(RequestInterface::class.java)
+    }
 
 }
