@@ -7,7 +7,7 @@ import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 
 object jokes {
-    val list =
+    val jokeString =
         listOf<String>(
             "Chuck Norris was recently asked what he thought of Nancy Pelosi? Chuck said he thinks Nancy Pelosi is uglier than a bucket of buttholes. There were no further questions.",
             "Once Chuck Norris peed against a fence. A police officer saw him and said - That's against the law! - No, said Chuck. It is against the fence!",
@@ -26,6 +26,18 @@ object jokes {
 
 }
 
+fun List<String>.toJokes(): List<Joke> = map { jokeString ->
+    Joke(
+        categories = emptyList(),
+        createdAt = "",
+        iconUrl = "",
+        id = "",
+        updatedAt = "",
+        url = "",
+        value = jokeString
+    )
+}
+
 object jokeApiServiceFactory {
 
     fun jokeService(): JokeApiService {
@@ -35,7 +47,7 @@ object jokeApiServiceFactory {
             .baseUrl(url)
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .addConverterFactory(fact.create())
-            .build().create(RequestInterface::class.java)
+            .build().create(JokeApiService::class.java)
     }
 
 }
