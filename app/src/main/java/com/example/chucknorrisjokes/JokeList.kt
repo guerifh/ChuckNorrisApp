@@ -1,7 +1,8 @@
 package com.example.chucknorrisjokes
 
+
 object jokes {
-    val list =
+    val jokeString =
         listOf<String>(
             "Chuck Norris was recently asked what he thought of Nancy Pelosi? Chuck said he thinks Nancy Pelosi is uglier than a bucket of buttholes. There were no further questions.",
             "Once Chuck Norris peed against a fence. A police officer saw him and said - That's against the law! - No, said Chuck. It is against the fence!",
@@ -19,3 +20,5 @@ object jokes {
 //Log.d("Liste", list.toString())
 
 }
+
+
